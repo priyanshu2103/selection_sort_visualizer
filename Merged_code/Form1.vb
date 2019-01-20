@@ -2,11 +2,13 @@
 Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
+Imports System.Text.RegularExpressions
 
 Public Class Form1
     Public MaxValue As Integer = 2147483647
     Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles sort.Click
         'sort.Enabled = False                I COMMENTED IT NAVEEN, YOUR CODE HAD IT UNCOMMENTED
+
         TextBox3.Clear()
         ' *** ONE MORE PART, HOW TO RESTRICT USER FROM ENTERING MORE THAN N ENTERIES IN TEXTBOX
         ' *** MORE THAN N ENTERIES OR LESS THAN N ENTERIES --> SHOW A YES/NO QUESTION - TO BE DONE
@@ -30,24 +32,14 @@ Public Class Form1
             MessageBox.Show("Choose a method to sort, ascending or descending", "Warning!")
         End If
 
+
         ' First stored the textbox input in a string array
-        Dim stringarr() As String
         Dim trim_string As String
         trim_string = Trim(TextBox2.Text)
+        Dim pattern As String = "\s+"
+        Dim regex As Regex = New Regex(pattern)
+        Dim stringarr() As String = regex.Split(trim_string, trim_string.Length, 0)
 
-        ' Checking for space separated decimals 
-        Dim checker_string As String = trim_string
-        Dim checker_array() As Char = checker_string.ToCharArray
-        For i = 0 To checker_array.Length - 2
-            If checker_array(i) = " " Then
-                If checker_array(i + 1) = " " Then
-                    MessageBox.Show("Enter space separated decimals only!!", "Warning!")
-                    TextBox2.Clear()
-                    Exit Sub
-                End If
-            End If
-        Next
-        stringarr = Split(checker_string, " ")
 
         ' Converted the string array into a integer array
         Dim enteredNum(stringarr.Length - 1) As Decimal
@@ -63,7 +55,7 @@ Public Class Form1
         For i As Integer = 0 To stringarr.Length - 1
             btnArray(i) = New System.Windows.Forms.Button
         Next i
-        
+
 
         Dim xPos As Integer = 423
         Dim yPos As Integer = 510
@@ -314,7 +306,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        
+
     End Sub
     Sub Delay(ByVal dblSecs As Double)
         Const onesec As Double = 1.0# / (1440.0# * 60.0#)
@@ -326,3 +318,4 @@ Public Class Form1
         Loop
     End Sub
 End Class
+
