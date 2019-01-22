@@ -1,1 +1,0 @@
-# selection_sort_visualizer

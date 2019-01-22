@@ -98,6 +98,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Selection_Sort_Visualiser.resx">
       <DependentUpon>Selection_Sort_Visualiser.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
