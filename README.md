@@ -1,3 +1,5 @@
 # selection_sort_visualizer(Software Engineering Project)
 
-Refer documentation folder to view all the instructions and functionalities
+A visual software for depicting selection sort algorithm using \n
+- swapping arrays \n
+- swapping graphs
